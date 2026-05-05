@@ -3,130 +3,659 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mejasan Media Production – Complete Client Portal</title>
+<title>Mejasan Media Production – Client Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --black:#0a0a0a; --white:#fafaf7; --cream:#f4f0e8; --gold:#c9a84c;
-  --gold-light:#e8d5a3; --red:#c0392b; --muted:#6b6560; --border:#ddd8ce;
-  --section-bg:#ffffff; --input-bg:#fdfcf9;
-}
-html { scroll-behavior:smooth; }
-body {
-  font-family:'DM Sans',sans-serif;
-  background:var(--cream);
-  color:var(--black);
-  min-height:100vh;
-  font-size:15px;
-  line-height:1.6;
-}
-.site-header {
-  background:var(--black); color:var(--white); position:sticky; top:0; z-index:100;
-  border-bottom:1px solid #222;
-}
-.header-inner {
-  max-width:1100px; margin:0 auto; padding:18px 28px;
-  display:flex; justify-content:space-between; align-items:center;
-}
-.logo-main {
-  font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600;
-  letter-spacing:.08em; color:var(--gold); text-transform:uppercase;
-}
-.logo-sub, .header-tagline {
-  font-size:10px; letter-spacing:.2em; text-transform:uppercase;
-}
-.hero {
-  background:var(--black); color:var(--white); text-align:center;
-  padding:64px 28px 56px; border-bottom:2px solid var(--gold);
-}
-.hero h1 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(34px,6vw,54px);
-  font-weight:300; margin-bottom:14px;
-}
-.hero em { color:var(--gold); }
-.hero p { max-width:650px; margin:auto; color:#aaa; }
-.progress-nav {
-  background:var(--black); padding:0 28px 28px;
-  display:flex; justify-content:center; align-items:center;
-}
-.nav-step { background:none; border:none; cursor:pointer; }
-.nav-pill {
-  display:flex; align-items:center; gap:8px;
-  padding:8px 18px; border-radius:40px;
-  font-size:12px; text-transform:uppercase;
-  letter-spacing:.12em; color:#666;
-}
-.nav-pill.active { background:var(--gold); color:var(--black); }
-.nav-pill.done { color:#7fb87f; }
-.nav-num {
-  width:20px; height:20px; border-radius:50%; background:#333;
-  display:flex; justify-content:center; align-items:center;
-}
-.nav-pill.active .nav-num { background:var(--black); color:var(--gold); }
-.nav-pill.done .nav-num { background:#2d6a2d; color:#fff; }
-.nav-sep { width:32px; height:1px; background:#333; }
-.main { max-width:1100px; margin:0 auto; padding:40px 20px 80px; }
-.tab-panel { display:none; }
-.tab-panel.active { display:block; }
-.section-card {
-  background:var(--section-bg); border:1px solid var(--border);
-  border-radius:4px; margin-bottom:24px; overflow:hidden;
-}
-.section-header {
-  background:var(--black); color:var(--white);
-  padding:16px 28px; display:flex; gap:14px; align-items:center;
-}
-.section-num {
-  font-family:'Cormorant Garamond',serif;
-  font-size:28px; color:var(--gold);
-}
-.section-title {
-  font-family:'Cormorant Garamond',serif;
-  font-size:17px; text-transform:uppercase; letter-spacing:.08em;
-}
-.section-body { padding:28px; }
-.field { margin-bottom:22px; }
-.field label {
-  display:block; margin-bottom:7px; font-size:12px;
-  text-transform:uppercase; letter-spacing:.12em; color:var(--muted);
-}
-.field input, .field textarea, .field select {
-  width:100%; padding:11px 14px; border:1px solid var(--border);
-  background:var(--input-bg); font-size:14px;
-}
-.field-row {
-  display:grid; grid-template-columns:1fr 1fr; gap:16px;
-}
-textarea { min-height:90px; resize:vertical; }
-@media(max-width:700px){ .field-row { grid-template-columns:1fr; } }
-.btn {
-  padding:13px 32px; background:var(--gold); color:var(--black);
-  border:none; cursor:pointer; text-transform:uppercase;
-}
-.submit-section, .success-screen {
-  text-align:center; padding:40px 28px;
-  background:var(--section-bg); border:1px solid var(--border);
-}
-.success-screen { display:none; }
-.success-screen.visible { display:block; }
-.signature-pad {
-  width:100%; max-width:500px; height:220px;
-  border:1px solid var(--border); background:#fff;
-}
-.file-note { font-size:12px; color:var(--muted); margin-top:6px; }
-.site-footer {
-  background:var(--black); color:#555; text-align:center;
-  padding:24px; font-size:11px;
-}
-.site-footer span { color:var(--gold); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #fafaf7;
+    --cream: #f4f0e8;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --red: #c0392b;
+    --muted: #6b6560;
+    --border: #ddd8ce;
+    --section-bg: #ffffff;
+    --input-bg: #fdfcf9;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #222;
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .logo-sub {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 300;
+  }
+  .header-tagline {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #666;
+    font-style: italic;
+  }
+
+  /* HERO BAND */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 64px 28px 56px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 6vw, 54px);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .hero p {
+    font-size: 14px;
+    color: #aaa;
+    max-width: 520px;
+    margin: 0 auto;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+  }
+
+  /* PROGRESS NAV */
+  .progress-nav {
+    background: var(--black);
+    padding: 0 28px 28px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .nav-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s;
+    color: #666;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .nav-pill.active {
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 500;
+  }
+  .nav-pill:hover:not(.active) { color: var(--gold-light); }
+  .nav-num {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: #333;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+    flex-shrink: 0;
+    transition: all 0.25s;
+  }
+  .nav-pill.active .nav-num { background: var(--black); color: var(--gold); }
+  .nav-pill.done .nav-num { background: #2d6a2d; color: #fff; }
+  .nav-pill.done { color: #7fb87f; }
+  .nav-sep { width: 32px; height: 1px; background: #333; flex-shrink: 0; align-self: center; }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* TABS */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION CARD */
+  .section-card {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    animation: fadeUp 0.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 28px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-body { padding: 28px; }
+
+  /* FORM FIELDS */
+  .field { margin-bottom: 22px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+  .field label .req { color: var(--gold); margin-left: 2px; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="date"],
+  .field input[type="time"],
+  .field textarea,
+  .field select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--input-bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--black);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+  .field textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 580px) {
+    .field-row, .field-row-3 { grid-template-columns: 1fr; }
+  }
+
+  .hint {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  /* RADIO / CHECKBOX */
+  .radio-group, .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .radio-opt, .check-opt {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    background: var(--input-bg);
+    user-select: none;
+  }
+  .radio-opt:hover, .check-opt:hover {
+    border-color: var(--gold);
+    background: #fffef9;
+  }
+  .radio-opt input, .check-opt input { accent-color: var(--gold); }
+  .radio-opt.selected, .check-opt.selected {
+    border-color: var(--gold);
+    background: #fffbee;
+  }
+
+  /* TIMELINE TABLE */
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* FAMILY GROUPS */
+  .family-entries { display: flex; flex-direction: column; gap: 10px; }
+  .family-entry {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .family-entry input { flex: 1; }
+  .btn-remove {
+    width: 32px; height: 32px;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    background: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-remove:hover { border-color: #ffaaaa; color: #c0392b; background: #fff5f5; }
+  .btn-add-row {
+    margin-top: 10px;
+    padding: 9px 18px;
+    border: 1px dashed var(--gold);
+    border-radius: 2px;
+    background: none;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .btn-add-row:hover { background: #fffbee; }
+
+  /* CONSENT BLOCK */
+  .consent-block {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 20px;
+    background: var(--cream);
+    margin-top: 8px;
+  }
+  .consent-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--section-bg);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .consent-option:last-child { margin-bottom: 0; }
+  .consent-option:hover { border-color: var(--gold); }
+  .consent-option input[type="radio"] { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; }
+  .consent-option-text strong { display: block; font-size: 13px; margin-bottom: 2px; }
+  .consent-option-text span { font-size: 12px; color: var(--muted); }
+
+  /* NAV BUTTONS */
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .btn {
+    padding: 13px 32px;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .btn-primary:hover { background: #b8943e; }
+  .btn-ghost {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-ghost:hover { border-color: var(--muted); color: var(--black); }
+  .btn-danger {
+    background: var(--red);
+    color: #fff;
+  }
+  .btn-danger:hover { background: #a93226; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* CONTRACT TAB */
+  .contract-header {
+    text-align: center;
+    padding: 48px 28px 32px;
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .contract-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .contract-header p {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .contract-meta {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .contract-meta h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contract-body {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .contract-body h3 {
+    background: var(--black);
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    font-weight: 400;
+  }
+  .contract-clauses { padding: 28px; }
+  .clause {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #f0ece4;
+  }
+  .clause:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .clause-title {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .clause p { font-size: 14px; line-height: 1.75; color: #3a3a3a; }
+
+  .signature-block {
+    background: var(--section-bg);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 32px 28px;
+    margin-bottom: 24px;
+  }
+  .signature-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 0.06em;
+  }
+  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 580px) { .sig-grid { grid-template-columns: 1fr; } }
+  .sig-party h4 {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .sig-canvas-wrap {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--input-bg);
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .sig-canvas-wrap canvas {
+    width: 100%; height: 100%;
+    cursor: crosshair;
+    display: block;
+    touch-action: none;
+  }
+  .sig-hint {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: #ccc;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-style: italic;
+    white-space: nowrap;
+  }
+  .btn-clear-sig {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-clear-sig:hover { border-color: var(--red); color: var(--red); }
+
+  /* INTERVIEW TAB */
+  .interview-card {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    animation: fadeUp 0.4s ease both;
+  }
+  .interview-card-header {
+    background: var(--black);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .interview-card-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .interview-card-body { padding: 24px; }
+  .interview-q {
+    font-size: 13px;
+    color: #444;
+    padding: 10px 0;
+    border-bottom: 1px solid #f4f0e8;
+    display: flex;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .interview-q:last-child { border-bottom: none; }
+  .interview-q .qnum {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 18px;
+    padding-top: 1px;
+  }
+  .guide-note {
+    background: #fffbee;
+    border: 1px solid var(--gold-light);
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #5a4a20;
+    line-height: 1.7;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .guide-note .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* SUCCESS / SUBMIT */
+  .submit-section {
+    text-align: center;
+    padding: 40px 28px;
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .submit-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .submit-section p { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 64px 28px;
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .success-screen.visible { display: block; }
+  .success-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: #eaf6ea;
+    border: 2px solid #7fbd7f;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+  }
+  .success-screen h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  .success-screen p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--black);
+    color: #555;
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 1px solid #222;
+  }
+  .site-footer span { color: var(--gold); }
 </style>
 </head>
 <body>
+
+<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
-    <div>
+    <div class="logo">
       <div class="logo-main">Mejasan</div>
       <div class="logo-sub">Media Production</div>
     </div>
@@ -134,264 +663,784 @@ textarea { min-height:90px; resize:vertical; }
   </div>
 </header>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>Your Wedding,<br><em>Beautifully</em> Planned</h1>
-  <p>Luxury wedding planning, storytelling, interviews, contracts, and production coordination in one premium client experience.</p>
+  <h1>Your Wedding,<br/><em>Beautifully</em> Planned</h1>
+  <p>Complete your wedding media planning questionnaire, review the morning interview guide, and sign your contract — all in one place.</p>
 </div>
 
+<!-- PROGRESS NAV -->
 <div class="progress-nav">
-  <button class="nav-step" onclick="goTab(0)"><div class="nav-pill active" id="np0"><span class="nav-num">1</span>Questionnaire</div></button>
+  <button class="nav-step" onclick="goTab(0)">
+    <div class="nav-pill active" id="np0"><span class="nav-num">1</span>Questionnaire</div>
+  </button>
   <div class="nav-sep"></div>
-  <button class="nav-step" onclick="goTab(1)"><div class="nav-pill" id="np1"><span class="nav-num">2</span>Interview Guide</div></button>
+  <button class="nav-step" onclick="goTab(1)">
+    <div class="nav-pill" id="np1"><span class="nav-num">2</span>Interview Guide</div>
+  </button>
   <div class="nav-sep"></div>
-  <button class="nav-step" onclick="goTab(2)"><div class="nav-pill" id="np2"><span class="nav-num">3</span>Contract</div></button>
+  <button class="nav-step" onclick="goTab(2)">
+    <div class="nav-pill" id="np2"><span class="nav-num">3</span>Contract</div>
+  </button>
 </div>
 
 <main class="main">
-<form id="wedding-form" name="submit-to-google-sheet" enctype="multipart/form-data">
 
-<!-- TAB 1 -->
-<div class="tab-panel active" id="tab0">
+  <!-- ======= TAB 1: QUESTIONNAIRE ======= -->
+  <div class="tab-panel active" id="tab0">
 
-<div class="section-card">
-<div class="section-header"><div class="section-num">1</div><div class="section-title">Event Overview & Logistics</div></div>
-<div class="section-body">
-<div class="field-row">
-<div class="field"><label>Bride's Full Name *</label><input type="text" name="bride_name" required></div>
-<div class="field"><label>Groom's Full Name *</label><input type="text" name="groom_name" required></div>
-</div>
-<div class="field-row">
-<div class="field"><label>Client Email *</label><input type="email" name="client_email" required></div>
-<div class="field"><label>Client Phone *</label><input type="tel" name="client_phone" required></div>
-</div>
-<div class="field-row">
-<div class="field"><label>Wedding Date *</label><input type="date" name="wedding_date" required></div>
-<div class="field"><label>Theme Colors</label><input type="text" name="theme_colors"></div>
-</div>
-<div class="field"><label>Bride Preparation Location *</label><input type="text" name="bride_prep_location" required></div>
-<div class="field"><label>Groom Preparation Location *</label><input type="text" name="groom_prep_location" required></div>
-<div class="field-row">
-<div class="field"><label>Ceremony Venue *</label><input type="text" name="ceremony_venue" required></div>
-<div class="field"><label>Reception Venue *</label><input type="text" name="reception_venue" required></div>
-</div>
-</div>
-</div>
+    <!-- Section 1 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title">Event Overview &amp; Logistics</div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>Bride's Full Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. Amina Wanjiku Kamau" id="bride-name"/>
+          </div>
+          <div class="field">
+            <label>Groom's Full Name <span class="req">*</span></label>
+            <input type="text" placeholder="e.g. David Otieno Mwangi" id="groom-name"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Wedding Date(s) <span class="req">*</span></label>
+            <input type="date" id="wedding-date"/>
+          </div>
+          <div class="field">
+            <label>Wedding Theme Color(s)</label>
+            <input type="text" placeholder="e.g. Ivory, Gold, Dusty Rose"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>Overall Wedding Theme / Concept</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="theme" value="rustic"/> Rustic</label>
+            <label class="radio-opt"><input type="radio" name="theme" value="royal"/> Royal</label>
+            <label class="radio-opt"><input type="radio" name="theme" value="modern"/> Modern</label>
+            <label class="radio-opt"><input type="radio" name="theme" value="garden"/> Garden</label>
+            <label class="radio-opt"><input type="radio" name="theme" value="traditional"/> Traditional</label>
+            <label class="radio-opt"><input type="radio" name="theme" value="other"/> Other</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Bride Preparation Location <span class="req">*</span></label>
+          <input type="text" placeholder="Venue name, exact address or GPS link"/>
+        </div>
+        <div class="field">
+          <label>Groom Preparation Location <span class="req">*</span></label>
+          <input type="text" placeholder="Venue name, exact address or GPS link"/>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Ceremony Venue <span class="req">*</span></label>
+            <input type="text" placeholder="Name &amp; Location"/>
+          </div>
+          <div class="field">
+            <label>Reception Venue <span class="req">*</span></label>
+            <input type="text" placeholder="Name &amp; Location"/>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section-card">
-<div class="section-header"><div class="section-num">2</div><div class="section-title">Timeline & Creative Direction</div></div>
-<div class="section-body">
-<div class="field-row">
-<div class="field"><label>Ceremony Start Time</label><input type="time" name="ceremony_time"></div>
-<div class="field"><label>Reception Start Time</label><input type="time" name="reception_time"></div>
-</div>
-<div class="field"><label>Photography Style Preference</label>
-<select name="photo_style">
-<option>Documentary</option><option>Editorial</option><option>Traditional</option>
-</select></div>
-<div class="field"><label>Special Requests / Notes</label><textarea name="notes"></textarea></div>
-</div>
-</div>
+    <!-- Section 2 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title">Wedding Day Timeline</div>
+      </div>
+      <div class="section-body">
+        <div class="timeline-grid">
+          <div class="field">
+            <label>Bride Prep Start Time</label>
+            <input type="time"/>
+          </div>
+          <div class="field">
+            <label>Groom Prep Start Time</label>
+            <input type="time"/>
+          </div>
+          <div class="field">
+            <label>Ceremony Start Time</label>
+            <input type="time"/>
+          </div>
+          <div class="field">
+            <label>Reception Start Time</label>
+            <input type="time"/>
+          </div>
+          <div class="field">
+            <label>Expected End Time</label>
+            <input type="time"/>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section-card">
-<div class="section-header"><div class="section-num">3</div><div class="section-title">VIPs & Family Coverage</div></div>
-<div class="section-body">
-<div class="field"><label>Bride's Parents</label><textarea name="bride_parents"></textarea></div>
-<div class="field"><label>Groom's Parents</label><textarea name="groom_parents"></textarea></div>
-<div class="field-row">
-<div class="field"><label>Best Man</label><input type="text" name="best_man"></div>
-<div class="field"><label>Maid of Honor</label><input type="text" name="maid_of_honor"></div>
-</div>
-<div class="field"><label>VIP Guests</label><textarea name="vip_guests"></textarea></div>
-<div class="field"><label>Family Photo Groupings</label><textarea name="family_photo_groupings"></textarea></div>
-</div>
-</div>
+    <!-- Section 3 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title">Creative Direction &amp; Style Preferences</div>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label>Photography Style <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="photo-style"/> Documentary</label>
+            <label class="radio-opt"><input type="radio" name="photo-style"/> Editorial</label>
+            <label class="radio-opt"><input type="radio" name="photo-style"/> Traditional</label>
+            <label class="radio-opt"><input type="radio" name="photo-style"/> Luxury</label>
+            <label class="radio-opt"><input type="radio" name="photo-style"/> Mix</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Video Style <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="video-style"/> Cinematic</label>
+            <label class="radio-opt"><input type="radio" name="video-style"/> Fun &amp; Upbeat</label>
+            <label class="radio-opt"><input type="radio" name="video-style"/> Emotional</label>
+            <label class="radio-opt"><input type="radio" name="video-style"/> Dramatic</label>
+            <label class="radio-opt"><input type="radio" name="video-style"/> Mix</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Reference photos or videos you love?</label>
+          <textarea placeholder="Share links, describe looks, or mention photographers whose work you admire..."></textarea>
+          <div class="hint">You can also email references to us separately.</div>
+        </div>
+        <div class="field">
+          <label>Styles or shots you DO NOT want?</label>
+          <textarea placeholder="e.g. No posed formal shots, avoid flash in church..."></textarea>
+        </div>
+      </div>
+    </div>
 
-<div class="section-card">
-<div class="section-header"><div class="section-num">4</div><div class="section-title">Reference Files Upload</div></div>
-<div class="section-body">
-<div class="field">
-<label>Upload Photos / Videos / PDFs</label>
-<input type="file" name="reference_files" multiple accept="image/*,video/*,.pdf">
-<div class="file-note">Upload mood boards, Pinterest references, sample edits, venue PDFs or planning docs.</div>
-</div>
-<div class="field"><label>Google Drive / Dropbox Links</label><textarea name="reference_materials"></textarea></div>
-</div>
-</div>
+    <!-- Section 4 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title">Key People &amp; Priority Coverage</div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>Bride's Parents' Names</label>
+            <input type="text" placeholder="Mother &amp; Father full names"/>
+          </div>
+          <div class="field">
+            <label>Groom's Parents' Names</label>
+            <input type="text" placeholder="Mother &amp; Father full names"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Best Man</label>
+            <input type="text" placeholder="Full name"/>
+          </div>
+          <div class="field">
+            <label>Maid of Honour</label>
+            <input type="text" placeholder="Full name"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>VIP Guests / Special Dignitaries</label>
+          <textarea placeholder="Names and titles of any dignitaries, high-profile guests who need priority coverage..."></textarea>
+        </div>
+      </div>
+    </div>
 
-<div class="submit-section">
-<h3>Proceed to Interview Guide</h3>
-<button type="button" class="btn" onclick="goTab(1)">Continue</button>
-</div>
-</div>
+    <!-- Section 5 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title">Family Photo Groupings Required</div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">List the specific family combinations you need photographed, e.g. "Bride + Bride's Parents", "All Bridesmaids", etc.</p>
+        <div class="family-entries" id="family-list">
+          <div class="family-entry">
+            <input type="text" placeholder="Group combination..."/>
+            <button class="btn-remove" onclick="removeRow(this)" title="Remove">×</button>
+          </div>
+          <div class="family-entry">
+            <input type="text" placeholder="Group combination..."/>
+            <button class="btn-remove" onclick="removeRow(this)" title="Remove">×</button>
+          </div>
+          <div class="family-entry">
+            <input type="text" placeholder="Group combination..."/>
+            <button class="btn-remove" onclick="removeRow(this)" title="Remove">×</button>
+          </div>
+        </div>
+        <button class="btn-add-row" onclick="addFamilyRow()">+ Add another grouping</button>
+      </div>
+    </div>
 
-<!-- TAB 2 -->
-<div class="tab-panel" id="tab1">
-<div class="section-card">
-<div class="section-header"><div class="section-num">5</div><div class="section-title">Bride Interview</div></div>
-<div class="section-body">
-<div class="field"><label>How are you feeling this morning?</label><textarea name="interview_bride_intro"></textarea></div>
-<div class="field"><label>Describe your partner</label><textarea name="interview_bride_partner_desc"></textarea></div>
-<div class="field"><label>Your message to your partner</label><textarea name="interview_bride_message"></textarea></div>
-</div>
-</div>
+    <!-- Section 6 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div class="section-title">Deliverables &amp; Package Details</div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>Preferred Highlight Video Length</label>
+            <select>
+              <option value="">Select length</option>
+              <option>3–5 minutes</option>
+              <option>5–8 minutes</option>
+              <option>8–12 minutes</option>
+              <option>12–20 minutes</option>
+              <option>No preference</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Full Documentary Edit Required?</label>
+            <div class="radio-group" style="margin-top:6px;">
+              <label class="radio-opt"><input type="radio" name="docu"/> Yes</label>
+              <label class="radio-opt"><input type="radio" name="docu"/> No</label>
+              <label class="radio-opt"><input type="radio" name="docu"/> Discuss later</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section-card">
-<div class="section-header"><div class="section-num">6</div><div class="section-title">Groom Interview</div></div>
-<div class="section-body">
-<div class="field"><label>How are you feeling this morning?</label><textarea name="interview_groom_intro"></textarea></div>
-<div class="field"><label>Describe your partner</label><textarea name="interview_groom_partner_desc"></textarea></div>
-<div class="field"><label>Your message to your partner</label><textarea name="interview_groom_message"></textarea></div>
-</div>
-</div>
+    <!-- Section 7 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div class="section-title">Audio &amp; Technical Coordination</div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>PA System Available?</label>
+            <div class="radio-group" style="margin-top:6px;">
+              <label class="radio-opt"><input type="radio" name="pa"/> Yes</label>
+              <label class="radio-opt"><input type="radio" name="pa"/> No</label>
+              <label class="radio-opt"><input type="radio" name="pa"/> Not sure</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Sound System Contact</label>
+            <input type="text" placeholder="Name &amp; phone number"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>Live Performances or Surprise Presentations?</label>
+          <textarea placeholder="Describe any live performances, surprise speeches, flash mobs, etc..."></textarea>
+        </div>
+      </div>
+    </div>
 
-<div class="submit-section">
-<h3>Proceed to Contract</h3>
-<button type="button" class="btn" onclick="goTab(2)">Continue</button>
-</div>
-</div>
+    <!-- Section 8 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <div class="section-title">Coordination Contacts</div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>Wedding Planner – Name</label>
+            <input type="text" placeholder="Full name"/>
+          </div>
+          <div class="field">
+            <label>Wedding Planner – Contact</label>
+            <input type="tel" placeholder="+254 7XX XXX XXX"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>MC – Name</label>
+            <input type="text" placeholder="Full name"/>
+          </div>
+          <div class="field">
+            <label>MC – Contact</label>
+            <input type="tel" placeholder="+254 7XX XXX XXX"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Church Coordinator – Name</label>
+            <input type="text" placeholder="Full name"/>
+          </div>
+          <div class="field">
+            <label>Church Coordinator – Contact</label>
+            <input type="tel" placeholder="+254 7XX XXX XXX"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Reception Venue Manager – Name</label>
+            <input type="text" placeholder="Full name"/>
+          </div>
+          <div class="field">
+            <label>Reception Venue Manager – Contact</label>
+            <input type="tel" placeholder="+254 7XX XXX XXX"/>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- TAB 3 -->
-<div class="tab-panel" id="tab2">
-<div class="section-card">
-<div class="section-header"><div class="section-num">7</div><div class="section-title">Contract Agreement</div></div>
-<div class="section-body">
-<div class="field-row">
-<div class="field"><label>Total Package Cost (KES)</label><input type="text" name="contract_total_cost"></div>
-<div class="field"><label>Deposit Paid?</label><select name="deposit_paid"><option>No</option><option>Yes</option></select></div>
-</div>
-<div class="field"><label>Promotional Consent</label>
-<select name="promo_consent"><option>Yes</option><option>No</option></select></div>
+    <!-- Section 9 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">9</div>
+        <div class="section-title">Your Love Story</div>
+      </div>
+      <div class="section-body">
+        <p style="font-size:13px;color:var(--muted);margin-bottom:20px;font-style:italic;">For your cinematic highlight film — share as much or as little as you're comfortable with.</p>
+        <div class="field">
+          <label>How did you meet?</label>
+          <textarea placeholder="Tell us your story..." style="min-height:100px;"></textarea>
+        </div>
+        <div class="field">
+          <label>Proposal Story</label>
+          <textarea placeholder="How did it happen?"></textarea>
+        </div>
+        <div class="field">
+          <label>Special Songs or Meaningful Quotes</label>
+          <input type="text" placeholder="Your song, a quote that means something to you both..."/>
+        </div>
+        <div class="field">
+          <label>Any Surprises Planned During the Wedding?</label>
+          <textarea placeholder="Flash mob? Special guest? A gift reveal? (We'll keep it secret!)"></textarea>
+        </div>
+      </div>
+    </div>
 
-<div class="field">
-<label>Digital Signature</label>
-<canvas id="signature-pad" class="signature-pad"></canvas>
-<input type="hidden" name="client_signature_data" id="client_signature_data">
-<button type="button" class="btn" style="margin-top:10px;" onclick="clearSignature()">Clear Signature</button>
-</div>
-</div>
-</div>
+    <!-- Section 10 -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div class="section-title">Agreement Confirmation</div>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label>Selected Package</label>
+          <input type="text" placeholder="e.g. Premium Full-Day Coverage"/>
+        </div>
+        <div class="field">
+          <label>Additional Services Requested</label>
+          <textarea placeholder="Any extras not in your package..."></textarea>
+        </div>
+        <div class="field">
+          <label>Preferred Delivery Timeline</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="delivery"/> Within 4 weeks</label>
+            <label class="radio-opt"><input type="radio" name="delivery"/> Within 6 weeks</label>
+            <label class="radio-opt"><input type="radio" name="delivery"/> Within 8 weeks</label>
+            <label class="radio-opt"><input type="radio" name="delivery"/> Flexible</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Client Email Address <span class="req">*</span></label>
+          <input type="email" placeholder="your@email.com" id="client-email"/>
+          <div class="hint">We'll send you a copy of your responses.</div>
+        </div>
+      </div>
+    </div>
 
-<div class="submit-section">
-<h3>Complete Portal Submission</h3>
-<p>Submit questionnaire, interviews, uploads, and contract securely.</p>
-<button type="submit" class="btn" id="submit-btn">Submit Complete Portal</button>
-</div>
-</div>
+    <div class="form-nav">
+      <span style="font-size:12px;color:var(--muted);">Fields marked <span style="color:var(--gold);">*</span> are required</span>
+      <button class="btn btn-primary" onclick="goTab(1)">Continue to Interview Guide →</button>
+    </div>
+  </div>
 
-</form>
+  <!-- ======= TAB 2: INTERVIEW GUIDE ======= -->
+  <div class="tab-panel" id="tab1">
 
-<div id="success-screen" class="success-screen">
-<h2>Submission Complete</h2>
-<p>Your wedding portal has been successfully recorded.</p>
-<p>A confirmation email, PDF copy, edit link, and client dashboard access link will be sent automatically.</p>
-</div>
+    <div class="guide-note">
+      <div class="icon">📋</div>
+      <div>
+        <strong style="display:block;margin-bottom:4px;">For Mejasan's crew – Morning Interview Guide</strong>
+        This guide is used on the morning of the wedding. Share this page with your client the evening before — they read and reflect on the questions privately, then speak from the heart during the filmed interview. No written answers needed.
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <h3>Introduction</h3>
+      </div>
+      <div class="interview-card-body">
+        <div class="interview-q"><span class="qnum">01</span><span>Please introduce yourself — what is your full name?</span></div>
+        <div class="interview-q"><span class="qnum">02</span><span>What is today's date?</span></div>
+        <div class="interview-q"><span class="qnum">03</span><span>What is happening today?</span></div>
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <h3>About Your Partner</h3>
+      </div>
+      <div class="interview-card-body">
+        <div class="interview-q"><span class="qnum">01</span><span>Who are you marrying today?</span></div>
+        <div class="interview-q"><span class="qnum">02</span><span>In a few words, how would you describe them?</span></div>
+        <div class="interview-q"><span class="qnum">03</span><span>What is the best thing about them?</span></div>
+        <div class="interview-q"><span class="qnum">04</span><span>What quality made you certain they are the one?</span></div>
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <h3>Expectations for the Day</h3>
+      </div>
+      <div class="interview-card-body">
+        <div class="interview-q"><span class="qnum">01</span><span>How are you feeling this morning?</span></div>
+        <div class="interview-q"><span class="qnum">02</span><span>What are your expectations for today?</span></div>
+        <div class="interview-q"><span class="qnum">03</span><span>What would make today perfect for you?</span></div>
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <h3>The Moment You Are Waiting For</h3>
+      </div>
+      <div class="interview-card-body">
+        <div class="interview-q"><span class="qnum">01</span><span>What moment are you most looking forward to?</span></div>
+        <div class="interview-q"><span class="qnum">02</span><span>Why is that moment special to you?</span></div>
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <h3>Direct Message to Your Lover</h3>
+      </div>
+      <div class="interview-card-body">
+        <div class="interview-q"><span class="qnum">01</span><span>If your partner was watching this right now, what would you say to them?</span></div>
+        <div class="interview-q"><span class="qnum">02</span><span>What promise are you making to them today?</span></div>
+        <div class="interview-q"><span class="qnum">03</span><span>Why do you choose them — today and always?</span></div>
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <div class="interview-card-header">
+        <h3>Gratitude</h3>
+      </div>
+      <div class="interview-card-body">
+        <div class="interview-q"><span class="qnum">01</span><span>Who would you like to thank as you begin this new chapter?</span></div>
+        <div class="interview-q"><span class="qnum">02</span><span>What would you like to say to your parents?</span></div>
+        <div class="interview-q"><span class="qnum">03</span><span>What would you like to say to your friends and everyone who stood by you?</span></div>
+        <div class="interview-q"><span class="qnum">04</span><span>What does their support mean to you?</span></div>
+      </div>
+    </div>
+
+    <div style="background:#fffbee;border:1px solid var(--gold-light);border-radius:4px;padding:20px 24px;margin-bottom:8px;font-size:13px;color:#5a4a20;text-align:center;line-height:1.8;">
+      <em>"Kindly reflect deeply and speak from the heart during your interview.<br/>There are no right or wrong answers — authenticity is what makes your story powerful."</em><br/>
+      <strong style="display:block;margin-top:8px;font-size:12px;letter-spacing:0.1em;">— Mejasan Media Production</strong>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-ghost" onclick="goTab(0)">← Back to Questionnaire</button>
+      <button class="btn btn-primary" onclick="goTab(2)">Continue to Contract →</button>
+    </div>
+  </div>
+
+  <!-- ======= TAB 3: CONTRACT ======= -->
+  <div class="tab-panel" id="tab2">
+
+    <div class="contract-header">
+      <h2>Wedding Videography &amp; Photography Contract</h2>
+      <p>Please fill in the event details below, read all terms carefully, and sign at the bottom to confirm your booking with Mejasan Media Production.</p>
+    </div>
+
+    <!-- Contract Meta Fields -->
+    <div class="contract-meta">
+      <h3>Event Details</h3>
+      <div class="field-row">
+        <div class="field">
+          <label>Event Name / Type</label>
+          <input type="text" placeholder="e.g. Wedding" value="Wedding"/>
+        </div>
+        <div class="field">
+          <label>Event Date <span class="req">*</span></label>
+          <input type="date" id="contract-date"/>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Location <span class="req">*</span></label>
+          <input type="text" placeholder="City / Venue name"/>
+        </div>
+        <div class="field">
+          <label>Total Cost (KES) <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. 150,000"/>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Client Full Name <span class="req">*</span></label>
+          <input type="text" placeholder="As it should appear on the contract" id="contract-client"/>
+        </div>
+        <div class="field">
+          <label>Client Contact / Phone <span class="req">*</span></label>
+          <input type="tel" placeholder="+254 7XX XXX XXX"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contract Clauses -->
+    <div class="contract-body">
+      <h3>Terms &amp; Conditions</h3>
+      <div class="contract-clauses">
+
+        <div class="clause">
+          <div class="clause-title">Entire Agreement</div>
+          <p>This contract represents the full understanding between Mejasan Media Production (the Company) and the Client for photography and videography services. Any changes must be made in writing and signed by both parties.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Booking &amp; Payments</div>
+          <p>A 75% deposit secures your booking. The remaining 25% is due before delivery of the final products. In case of cancellation, 15% of the deposit is non-refundable. Any other costs already incurred must also be covered.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Schedule &amp; Timing</div>
+          <p>The Client agrees to confirm the event schedule at least one week in advance. Shooting starts and ends at the agreed times. If there is a delay, coverage ends as scheduled unless extended — extra charges may apply.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Travel &amp; Logistics</div>
+          <p>Travel, accommodation, or transport costs may apply based on the event location. These will be communicated in advance.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Responsibilities &amp; Limitations</div>
+          <p>The Company is not liable for issues beyond its control (e.g. guest interference, weather, venue restrictions, or delays). The Client is responsible for acquiring any necessary permits or permissions.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Safety</div>
+          <p>The Company reserves the right to stop coverage if its crew experiences inappropriate or unsafe behaviour. This is to ensure safety for all involved.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Image Editing &amp; Delivery</div>
+          <p>The Company will select and edit the best images. Delivery will be completed within two months after the event, assuming full payment. Physical items should be collected within this period. A 1% monthly charge will apply for uncollected items after two months.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Unforeseen Circumstances</div>
+          <p>If the Company is unable to perform due to illness, equipment failure, or unforeseen events, efforts will be made to find a replacement. If not possible, liability is limited to a refund of payments made.</p>
+        </div>
+
+        <div class="clause">
+          <div class="clause-title">Copyright &amp; Consent to Share</div>
+          <p>Upon final delivery, the Client holds full usage rights. The Company may share select content for promotional purposes. Please indicate your preference below:</p>
+          <div class="consent-block" style="margin-top:14px;">
+            <label class="consent-option">
+              <input type="radio" name="consent" value="yes"/>
+              <div class="consent-option-text">
+                <strong>✓ Yes — I give permission</strong>
+                <span>Mejasan Media Production may use selected content from my event for promotional purposes (website, social media, portfolio).</span>
+              </div>
+            </label>
+            <label class="consent-option">
+              <input type="radio" name="consent" value="no"/>
+              <div class="consent-option-text">
+                <strong>✕ No — Keep my content private</strong>
+                <span>I prefer my content remain private and not be shared publicly.</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Signature Block -->
+    <div class="signature-block">
+      <h3>Signatures — Agreement Confirmation</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:24px;">By signing below, both parties agree to all terms and conditions stated in this contract.</p>
+      <div class="sig-grid">
+        <div class="sig-party">
+          <h4>Client Signature</h4>
+          <div class="sig-canvas-wrap">
+            <canvas id="sig-client" width="400" height="100"></canvas>
+            <div class="sig-hint" id="hint-client">Draw your signature here</div>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="text" placeholder="Print full name" style="font-size:13px;"/>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="date" style="font-size:13px;"/>
+          </div>
+          <button class="btn-clear-sig" onclick="clearSig('sig-client','hint-client')">Clear</button>
+        </div>
+
+        <div class="sig-party">
+          <h4>Witness Signature (Client Side)</h4>
+          <div class="sig-canvas-wrap">
+            <canvas id="sig-witness" width="400" height="100"></canvas>
+            <div class="sig-hint" id="hint-witness">Draw witness signature here</div>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="text" placeholder="Witness full name" style="font-size:13px;"/>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="date" style="font-size:13px;"/>
+          </div>
+          <button class="btn-clear-sig" onclick="clearSig('sig-witness','hint-witness')">Clear</button>
+        </div>
+
+        <div class="sig-party">
+          <h4>Company Representative</h4>
+          <div class="sig-canvas-wrap">
+            <canvas id="sig-company" width="400" height="100"></canvas>
+            <div class="sig-hint" id="hint-company">Company rep signature</div>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="text" placeholder="Rep full name" value="Mejasan Media Production" style="font-size:13px;"/>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="date" style="font-size:13px;"/>
+          </div>
+          <button class="btn-clear-sig" onclick="clearSig('sig-company','hint-company')">Clear</button>
+        </div>
+
+        <div class="sig-party">
+          <h4>Witness Signature (Company Side)</h4>
+          <div class="sig-canvas-wrap">
+            <canvas id="sig-compwit" width="400" height="100"></canvas>
+            <div class="sig-hint" id="hint-compwit">Company witness signature</div>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="text" placeholder="Witness full name" style="font-size:13px;"/>
+          </div>
+          <div class="field" style="margin-bottom:8px;">
+            <input type="date" style="font-size:13px;"/>
+          </div>
+          <button class="btn-clear-sig" onclick="clearSig('sig-compwit','hint-compwit')">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-section" id="submit-section">
+      <h3>Ready to Submit</h3>
+      <p>By clicking submit you confirm you have read and agreed to all terms above. A confirmation email will be sent to you and to Mejasan Media Production.</p>
+      <button class="btn btn-primary" style="font-size:13px;padding:15px 48px;" onclick="submitAll()">Submit &amp; Confirm Booking</button>
+    </div>
+
+    <!-- Success -->
+    <div class="success-screen" id="success-screen">
+      <div class="success-icon">✓</div>
+      <h2>Booking Confirmed!</h2>
+      <p style="max-width:440px;margin:0 auto 10px;">Thank you for choosing Mejasan Media Production. Your questionnaire and signed contract have been received. We look forward to telling your love story beautifully.</p>
+      <p style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-top:16px;">We Deliver Quality</p>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-ghost" onclick="goTab(1)">← Back to Interview Guide</button>
+    </div>
+  </div>
+
 </main>
 
 <footer class="site-footer">
-<span>Mejasan Media Production</span> · Nairobi, Kenya
+  <span>Mejasan Media Production</span> &nbsp;·&nbsp; We Deliver Quality &nbsp;·&nbsp; Nairobi, Kenya
 </footer>
 
 <script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw8vMIk_JaIhuE-zEkd1alv3jI_ClEAeOVgHU2g6bsniLRTgGHdFij0OC14SjU-h3KZ/exec';
-const form = document.forms['submit-to-google-sheet'];
-const tabs = document.querySelectorAll('.tab-panel');
-const pills = document.querySelectorAll('.nav-pill');
-
+// ─── Tab navigation ───
+let currentTab = 0;
 function goTab(n) {
-  tabs.forEach((tab, i) => {
-    tab.classList.toggle('active', i === n);
-    pills[i].classList.toggle('active', i === n);
-    if (i < n) pills[i].classList.add('done');
+  document.querySelectorAll('.tab-panel').forEach((p,i) => p.classList.toggle('active', i===n));
+  ['np0','np1','np2'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    el.classList.toggle('active', i===n);
+    if(i < n) el.classList.add('done'); else el.classList.remove('done');
   });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  currentTab = n;
+  window.scrollTo({top: 0, behavior:'smooth'});
 }
 
-function showSuccess() {
-  document.getElementById('wedding-form').style.display = 'none';
+// ─── Radio/check highlight ───
+document.querySelectorAll('.radio-opt, .check-opt').forEach(opt => {
+  opt.addEventListener('change', () => {
+    const name = opt.querySelector('input').name;
+    if(name) document.querySelectorAll(`input[name="${name}"]`).forEach(inp => {
+      inp.closest('.radio-opt, .check-opt')?.classList.toggle('selected', inp.checked);
+    });
+  });
+});
+
+// ─── Family rows ───
+function addFamilyRow() {
+  const list = document.getElementById('family-list');
+  const div = document.createElement('div');
+  div.className = 'family-entry';
+  div.innerHTML = `<input type="text" placeholder="Group combination..."/><button class="btn-remove" onclick="removeRow(this)" title="Remove">×</button>`;
+  list.appendChild(div);
+  div.querySelector('input').focus();
+}
+function removeRow(btn) {
+  const list = document.getElementById('family-list');
+  if(list.children.length > 1) btn.closest('.family-entry').remove();
+}
+
+// ─── Signature canvas ───
+function initCanvas(id, hintId) {
+  const canvas = document.getElementById(id);
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = '#1a1a1a';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  let drawing = false;
+
+  function getPos(e) {
+    const r = canvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return { x: (src.clientX - r.left) * (canvas.width / r.width), y: (src.clientY - r.top) * (canvas.height / r.height) };
+  }
+  function start(e) {
+    drawing = true;
+    const p = getPos(e);
+    ctx.beginPath(); ctx.moveTo(p.x, p.y);
+    document.getElementById(hintId).style.opacity = '0';
+    e.preventDefault();
+  }
+  function move(e) {
+    if(!drawing) return;
+    const p = getPos(e);
+    ctx.lineTo(p.x, p.y); ctx.stroke();
+    e.preventDefault();
+  }
+  function end() { drawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('mouseleave', end);
+  canvas.addEventListener('touchstart', start, {passive:false});
+  canvas.addEventListener('touchmove', move, {passive:false});
+  canvas.addEventListener('touchend', end);
+}
+
+function clearSig(id, hintId) {
+  const canvas = document.getElementById(id);
+  canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
+  document.getElementById(hintId).style.opacity = '1';
+}
+
+['sig-client','sig-witness','sig-company','sig-compwit'].forEach((id,i) => {
+  initCanvas(id, ['hint-client','hint-witness','hint-company','hint-compwit'][i]);
+});
+
+// ─── Submit ───
+function submitAll() {
+  document.getElementById('submit-section').style.display = 'none';
   document.getElementById('success-screen').classList.add('visible');
+  window.scrollTo({top: document.getElementById('success-screen').offsetTop - 80, behavior:'smooth'});
 }
-
-// Signature Pad
-const canvas = document.getElementById('signature-pad');
-const ctx = canvas.getContext('2d');
-let drawing = false;
-
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-canvas.addEventListener('mousedown', () => { drawing = true; ctx.beginPath(); });
-canvas.addEventListener('mouseup', () => {
-  drawing = false;
-  document.getElementById('client_signature_data').value = canvas.toDataURL();
-});
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('touchstart', e => { drawing = true; ctx.beginPath(); });
-canvas.addEventListener('touchend', () => {
-  drawing = false;
-  document.getElementById('client_signature_data').value = canvas.toDataURL();
-});
-canvas.addEventListener('touchmove', drawTouch);
-
-function draw(e) {
-  if (!drawing) return;
-  ctx.lineWidth = 2;
-  ctx.lineCap = 'round';
-  ctx.strokeStyle = '#000';
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
-}
-
-function drawTouch(e) {
-  if (!drawing) return;
-  e.preventDefault();
-  const rect = canvas.getBoundingClientRect();
-  const touch = e.touches[0];
-  const x = touch.clientX - rect.left;
-  const y = touch.clientY - rect.top;
-  ctx.lineWidth = 2;
-  ctx.lineCap = 'round';
-  ctx.strokeStyle = '#000';
-  ctx.lineTo(x, y);
-  ctx.stroke();
-}
-
-function clearSignature() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  document.getElementById('client_signature_data').value = '';
-}
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.innerText = 'Sending...';
-
-  const formData = new FormData(form);
-  formData.append('timestamp', new Date().toISOString());
-  formData.append('client_id', 'MEJ-' + Date.now());
-  formData.append('submission_status', 'Completed');
-  formData.append('payment_status', 'Pending');
-
-  fetch(scriptURL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.text())
-  .then(data => {
-    console.log('Success:', data);
-    showSuccess();
-  })
-  .catch(error => {
-    console.error('Error!', error.message);
-    btn.disabled = false;
-    btn.innerText = 'Submit Complete Portal';
-    alert('Submission failed. Please check internet or retry.');
-  });
-});
 </script>
 </body>
 </html>
