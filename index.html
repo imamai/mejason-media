@@ -3,325 +3,130 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mejasan Media Production – Client Portal</title>
+<title>Mejasan Media Production – Complete Client Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --black: #0a0a0a;
-    --white: #fafaf7;
-    --cream: #f4f0e8;
-    --gold: #c9a84c;
-    --gold-light: #e8d5a3;
-    --red: #c0392b;
-    --muted: #6b6560;
-    --border: #ddd8ce;
-    --section-bg: #ffffff;
-    --input-bg: #fdfcf9;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--black);
-    min-height: 100vh;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* HEADER */
-  .site-header {
-    background: var(--black);
-    color: var(--white);
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid #222;
-  }
-  .header-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 18px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .logo-main {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-  .logo-sub {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #888;
-    font-weight: 300;
-  }
-  .header-tagline {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #666;
-    font-style: italic;
-  }
-
-  /* HERO BAND */
-  .hero {
-    background: var(--black);
-    color: var(--white);
-    text-align: center;
-    padding: 64px 28px 56px;
-    border-bottom: 2px solid var(--gold);
-  }
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(34px, 6vw, 54px);
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    line-height: 1.2;
-    margin-bottom: 14px;
-  }
-  .hero h1 em {
-    color: var(--gold);
-    font-style: italic;
-  }
-  .hero p {
-    font-size: 14px;
-    color: #aaa;
-    max-width: 520px;
-    margin: 0 auto;
-    letter-spacing: 0.02em;
-    line-height: 1.7;
-  }
-
-  /* PROGRESS NAV */
-  .progress-nav {
-    background: var(--black);
-    padding: 0 28px 28px;
-    display: flex;
-    justify-content: center;
-    gap: 0;
-  }
-  .nav-step {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-  }
-  .nav-pill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    border-radius: 40px;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.25s;
-    color: #666;
-    font-weight: 400;
-    cursor: pointer;
-  }
-  .nav-pill.active {
-    background: var(--gold);
-    color: var(--black);
-    font-weight: 500;
-  }
-  .nav-pill:hover:not(.active) { color: var(--gold-light); }
-  .nav-num {
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    background: #333;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px;
-    font-weight: 500;
-    flex-shrink: 0;
-    transition: all 0.25s;
-  }
-  .nav-pill.active .nav-num { background: var(--black); color: var(--gold); }
-  .nav-pill.done .nav-num { background: #2d6a2d; color: #fff; }
-  .nav-pill.done { color: #7fb87f; }
-  .nav-sep { width: 32px; height: 1px; background: #333; flex-shrink: 0; align-self: center; }
-
-  /* MAIN */
-  .main { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
-
-  /* TABS */
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* SECTION CARD */
-  .section-card {
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 24px;
-    overflow: hidden;
-    animation: fadeUp 0.4s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .section-header {
-    background: var(--black);
-    color: var(--white);
-    padding: 16px 28px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .section-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    min-width: 28px;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .section-body { padding: 28px; }
-
-  /* FORM FIELDS */
-  .field { margin-bottom: 22px; }
-  .field:last-child { margin-bottom: 0; }
-  .field label {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 7px;
-  }
-  .field label .req { color: var(--gold); margin-left: 2px; }
-  .field input[type="text"],
-  .field input[type="email"],
-  .field input[type="tel"],
-  .field input[type="date"],
-  .field input[type="time"],
-  .field textarea,
-  .field select {
-    width: 100%;
-    padding: 11px 14px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    background: var(--input-bg);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--black);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    appearance: none;
-  }
-  .field input:focus,
-  .field textarea:focus,
-  .field select:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
-  }
-  .field textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 580px) {
-    .field-row { grid-template-columns: 1fr; }
-  }
-
-  /* SUBMIT & SUCCESS */
-  .submit-section {
-    text-align: center;
-    padding: 40px 28px;
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 24px;
-  }
-  .submit-section h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 10px;
-  }
-  .submit-section p { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
-
-  .success-screen {
-    display: none;
-    text-align: center;
-    padding: 64px 28px;
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-  }
-  .success-screen.visible { display: block; }
-  .success-icon {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    background: #eaf6ea;
-    border: 2px solid #7fbd7f;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 28px;
-  }
-  .btn {
-    padding: 13px 32px;
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: none;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--black);
-  }
-  .btn-primary:hover { background: #b8943e; }
-
-  /* FOOTER */
-  .site-footer {
-    background: var(--black);
-    color: #555;
-    text-align: center;
-    padding: 24px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-top: 1px solid #222;
-  }
-  .site-footer span { color: var(--gold); }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:#0a0a0a; --white:#fafaf7; --cream:#f4f0e8; --gold:#c9a84c;
+  --gold-light:#e8d5a3; --red:#c0392b; --muted:#6b6560; --border:#ddd8ce;
+  --section-bg:#ffffff; --input-bg:#fdfcf9;
+}
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--black);
+  min-height:100vh;
+  font-size:15px;
+  line-height:1.6;
+}
+.site-header {
+  background:var(--black); color:var(--white); position:sticky; top:0; z-index:100;
+  border-bottom:1px solid #222;
+}
+.header-inner {
+  max-width:1100px; margin:0 auto; padding:18px 28px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.logo-main {
+  font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600;
+  letter-spacing:.08em; color:var(--gold); text-transform:uppercase;
+}
+.logo-sub, .header-tagline {
+  font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+}
+.hero {
+  background:var(--black); color:var(--white); text-align:center;
+  padding:64px 28px 56px; border-bottom:2px solid var(--gold);
+}
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,6vw,54px);
+  font-weight:300; margin-bottom:14px;
+}
+.hero em { color:var(--gold); }
+.hero p { max-width:650px; margin:auto; color:#aaa; }
+.progress-nav {
+  background:var(--black); padding:0 28px 28px;
+  display:flex; justify-content:center; align-items:center;
+}
+.nav-step { background:none; border:none; cursor:pointer; }
+.nav-pill {
+  display:flex; align-items:center; gap:8px;
+  padding:8px 18px; border-radius:40px;
+  font-size:12px; text-transform:uppercase;
+  letter-spacing:.12em; color:#666;
+}
+.nav-pill.active { background:var(--gold); color:var(--black); }
+.nav-pill.done { color:#7fb87f; }
+.nav-num {
+  width:20px; height:20px; border-radius:50%; background:#333;
+  display:flex; justify-content:center; align-items:center;
+}
+.nav-pill.active .nav-num { background:var(--black); color:var(--gold); }
+.nav-pill.done .nav-num { background:#2d6a2d; color:#fff; }
+.nav-sep { width:32px; height:1px; background:#333; }
+.main { max-width:1100px; margin:0 auto; padding:40px 20px 80px; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.section-card {
+  background:var(--section-bg); border:1px solid var(--border);
+  border-radius:4px; margin-bottom:24px; overflow:hidden;
+}
+.section-header {
+  background:var(--black); color:var(--white);
+  padding:16px 28px; display:flex; gap:14px; align-items:center;
+}
+.section-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px; color:var(--gold);
+}
+.section-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px; text-transform:uppercase; letter-spacing:.08em;
+}
+.section-body { padding:28px; }
+.field { margin-bottom:22px; }
+.field label {
+  display:block; margin-bottom:7px; font-size:12px;
+  text-transform:uppercase; letter-spacing:.12em; color:var(--muted);
+}
+.field input, .field textarea, .field select {
+  width:100%; padding:11px 14px; border:1px solid var(--border);
+  background:var(--input-bg); font-size:14px;
+}
+.field-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+}
+textarea { min-height:90px; resize:vertical; }
+@media(max-width:700px){ .field-row { grid-template-columns:1fr; } }
+.btn {
+  padding:13px 32px; background:var(--gold); color:var(--black);
+  border:none; cursor:pointer; text-transform:uppercase;
+}
+.submit-section, .success-screen {
+  text-align:center; padding:40px 28px;
+  background:var(--section-bg); border:1px solid var(--border);
+}
+.success-screen { display:none; }
+.success-screen.visible { display:block; }
+.signature-pad {
+  width:100%; max-width:500px; height:220px;
+  border:1px solid var(--border); background:#fff;
+}
+.file-note { font-size:12px; color:var(--muted); margin-top:6px; }
+.site-footer {
+  background:var(--black); color:#555; text-align:center;
+  padding:24px; font-size:11px;
+}
+.site-footer span { color:var(--gold); }
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
-    <div class="logo">
+    <div>
       <div class="logo-main">Mejasan</div>
       <div class="logo-sub">Media Production</div>
     </div>
@@ -329,170 +134,264 @@
   </div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>Your Wedding,<br/><em>Beautifully</em> Planned</h1>
-  <p>Complete your wedding media planning questionnaire and let us capture your story.</p>
+  <h1>Your Wedding,<br><em>Beautifully</em> Planned</h1>
+  <p>Luxury wedding planning, storytelling, interviews, contracts, and production coordination in one premium client experience.</p>
 </div>
 
-<!-- PROGRESS NAV -->
 <div class="progress-nav">
-  <button class="nav-step" onclick="goTab(0)">
-    <div class="nav-pill active" id="np0"><span class="nav-num">1</span>Questionnaire</div>
-  </button>
+  <button class="nav-step" onclick="goTab(0)"><div class="nav-pill active" id="np0"><span class="nav-num">1</span>Questionnaire</div></button>
   <div class="nav-sep"></div>
-  <button class="nav-step" style="opacity: 0.5; cursor: default;">
-    <div class="nav-pill" id="np1"><span class="nav-num">2</span>Interview Guide</div>
-  </button>
+  <button class="nav-step" onclick="goTab(1)"><div class="nav-pill" id="np1"><span class="nav-num">2</span>Interview Guide</div></button>
   <div class="nav-sep"></div>
-  <button class="nav-step" style="opacity: 0.5; cursor: default;">
-    <div class="nav-pill" id="np2"><span class="nav-num">3</span>Contract</div>
-  </button>
+  <button class="nav-step" onclick="goTab(2)"><div class="nav-pill" id="np2"><span class="nav-num">3</span>Contract</div></button>
 </div>
 
 <main class="main">
-  <!-- FORM START -->
-  <form id="wedding-form" name="submit-to-google-sheet">
+<form id="wedding-form" name="submit-to-google-sheet" enctype="multipart/form-data">
 
-    <div class="tab-panel active" id="tab0">
+<!-- TAB 1 -->
+<div class="tab-panel active" id="tab0">
 
-      <!-- Section 1 -->
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-num">1</div>
-          <div class="section-title">Event Overview & Logistics</div>
-        </div>
-        <div class="section-body">
-          <div class="field-row">
-            <div class="field">
-              <label>Bride's Full Name <span class="req">*</span></label>
-              <input type="text" name="bride_name" placeholder="e.g. Amina Wanjiku Kamau" required/>
-            </div>
-            <div class="field">
-              <label>Groom's Full Name <span class="req">*</span></label>
-              <input type="text" name="groom_name" placeholder="e.g. David Otieno Mwangi" required/>
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label>Wedding Date(s) <span class="req">*</span></label>
-              <input type="date" name="wedding_date" required/>
-            </div>
-            <div class="field">
-              <label>Wedding Theme Color(s)</label>
-              <input type="text" name="theme_colors" placeholder="e.g. Ivory, Gold, Dusty Rose"/>
-            </div>
-          </div>
-          <div class="field">
-            <label>Bride Preparation Location <span class="req">*</span></label>
-            <input type="text" name="bride_prep_location" placeholder="Venue name or address" required/>
-          </div>
-          <div class="field">
-            <label>Groom Preparation Location <span class="req">*</span></label>
-            <input type="text" name="groom_prep_location" placeholder="Venue name or address" required/>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label>Ceremony Venue <span class="req">*</span></label>
-              <input type="text" name="ceremony_venue" required/>
-            </div>
-            <div class="field">
-              <label>Reception Venue <span class="req">*</span></label>
-              <input type="text" name="reception_venue" required/>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="section-card">
+<div class="section-header"><div class="section-num">1</div><div class="section-title">Event Overview & Logistics</div></div>
+<div class="section-body">
+<div class="field-row">
+<div class="field"><label>Bride's Full Name *</label><input type="text" name="bride_name" required></div>
+<div class="field"><label>Groom's Full Name *</label><input type="text" name="groom_name" required></div>
+</div>
+<div class="field-row">
+<div class="field"><label>Client Email *</label><input type="email" name="client_email" required></div>
+<div class="field"><label>Client Phone *</label><input type="tel" name="client_phone" required></div>
+</div>
+<div class="field-row">
+<div class="field"><label>Wedding Date *</label><input type="date" name="wedding_date" required></div>
+<div class="field"><label>Theme Colors</label><input type="text" name="theme_colors"></div>
+</div>
+<div class="field"><label>Bride Preparation Location *</label><input type="text" name="bride_prep_location" required></div>
+<div class="field"><label>Groom Preparation Location *</label><input type="text" name="groom_prep_location" required></div>
+<div class="field-row">
+<div class="field"><label>Ceremony Venue *</label><input type="text" name="ceremony_venue" required></div>
+<div class="field"><label>Reception Venue *</label><input type="text" name="reception_venue" required></div>
+</div>
+</div>
+</div>
 
-      <!-- Section 2 -->
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-num">2</div>
-          <div class="section-title">Timeline & Creative</div>
-        </div>
-        <div class="section-body">
-          <div class="field-row">
-            <div class="field">
-              <label>Ceremony Start Time</label>
-              <input type="time" name="ceremony_time"/>
-            </div>
-            <div class="field">
-              <label>Reception Start Time</label>
-              <input type="time" name="reception_time"/>
-            </div>
-          </div>
-          <div class="field">
-            <label>Photography Style Preference</label>
-            <select name="photo_style">
-                <option value="Documentary">Documentary</option>
-                <option value="Editorial">Editorial</option>
-                <option value="Traditional">Traditional</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Special Requests / Notes</label>
-            <textarea name="notes" placeholder="Any specific moments you want us to capture?"></textarea>
-          </div>
-        </div>
-      </div>
+<div class="section-card">
+<div class="section-header"><div class="section-num">2</div><div class="section-title">Timeline & Creative Direction</div></div>
+<div class="section-body">
+<div class="field-row">
+<div class="field"><label>Ceremony Start Time</label><input type="time" name="ceremony_time"></div>
+<div class="field"><label>Reception Start Time</label><input type="time" name="reception_time"></div>
+</div>
+<div class="field"><label>Photography Style Preference</label>
+<select name="photo_style">
+<option>Documentary</option><option>Editorial</option><option>Traditional</option>
+</select></div>
+<div class="field"><label>Special Requests / Notes</label><textarea name="notes"></textarea></div>
+</div>
+</div>
 
-      <!-- SUBMIT -->
-      <div class="submit-section" id="submit-section">
-        <h3>Ready to send?</h3>
-        <p>Please review your details before submitting to our production team.</p>
-        <button type="submit" class="btn btn-primary" id="submit-btn">Submit Questionnaire</button>
-      </div>
+<div class="section-card">
+<div class="section-header"><div class="section-num">3</div><div class="section-title">VIPs & Family Coverage</div></div>
+<div class="section-body">
+<div class="field"><label>Bride's Parents</label><textarea name="bride_parents"></textarea></div>
+<div class="field"><label>Groom's Parents</label><textarea name="groom_parents"></textarea></div>
+<div class="field-row">
+<div class="field"><label>Best Man</label><input type="text" name="best_man"></div>
+<div class="field"><label>Maid of Honor</label><input type="text" name="maid_of_honor"></div>
+</div>
+<div class="field"><label>VIP Guests</label><textarea name="vip_guests"></textarea></div>
+<div class="field"><label>Family Photo Groupings</label><textarea name="family_photo_groupings"></textarea></div>
+</div>
+</div>
 
-    </div>
-  </form>
+<div class="section-card">
+<div class="section-header"><div class="section-num">4</div><div class="section-title">Reference Files Upload</div></div>
+<div class="section-body">
+<div class="field">
+<label>Upload Photos / Videos / PDFs</label>
+<input type="file" name="reference_files" multiple accept="image/*,video/*,.pdf">
+<div class="file-note">Upload mood boards, Pinterest references, sample edits, venue PDFs or planning docs.</div>
+</div>
+<div class="field"><label>Google Drive / Dropbox Links</label><textarea name="reference_materials"></textarea></div>
+</div>
+</div>
 
-  <!-- SUCCESS SCREEN -->
-  <div id="success-screen" class="success-screen">
-    <div class="success-icon">✓</div>
-    <h2>Received!</h2>
-    <p>Thank you. Your details have been recorded in the Mejasan Media system. We will contact you shortly.</p>
-  </div>
+<div class="submit-section">
+<h3>Proceed to Interview Guide</h3>
+<button type="button" class="btn" onclick="goTab(1)">Continue</button>
+</div>
+</div>
+
+<!-- TAB 2 -->
+<div class="tab-panel" id="tab1">
+<div class="section-card">
+<div class="section-header"><div class="section-num">5</div><div class="section-title">Bride Interview</div></div>
+<div class="section-body">
+<div class="field"><label>How are you feeling this morning?</label><textarea name="interview_bride_intro"></textarea></div>
+<div class="field"><label>Describe your partner</label><textarea name="interview_bride_partner_desc"></textarea></div>
+<div class="field"><label>Your message to your partner</label><textarea name="interview_bride_message"></textarea></div>
+</div>
+</div>
+
+<div class="section-card">
+<div class="section-header"><div class="section-num">6</div><div class="section-title">Groom Interview</div></div>
+<div class="section-body">
+<div class="field"><label>How are you feeling this morning?</label><textarea name="interview_groom_intro"></textarea></div>
+<div class="field"><label>Describe your partner</label><textarea name="interview_groom_partner_desc"></textarea></div>
+<div class="field"><label>Your message to your partner</label><textarea name="interview_groom_message"></textarea></div>
+</div>
+</div>
+
+<div class="submit-section">
+<h3>Proceed to Contract</h3>
+<button type="button" class="btn" onclick="goTab(2)">Continue</button>
+</div>
+</div>
+
+<!-- TAB 3 -->
+<div class="tab-panel" id="tab2">
+<div class="section-card">
+<div class="section-header"><div class="section-num">7</div><div class="section-title">Contract Agreement</div></div>
+<div class="section-body">
+<div class="field-row">
+<div class="field"><label>Total Package Cost (KES)</label><input type="text" name="contract_total_cost"></div>
+<div class="field"><label>Deposit Paid?</label><select name="deposit_paid"><option>No</option><option>Yes</option></select></div>
+</div>
+<div class="field"><label>Promotional Consent</label>
+<select name="promo_consent"><option>Yes</option><option>No</option></select></div>
+
+<div class="field">
+<label>Digital Signature</label>
+<canvas id="signature-pad" class="signature-pad"></canvas>
+<input type="hidden" name="client_signature_data" id="client_signature_data">
+<button type="button" class="btn" style="margin-top:10px;" onclick="clearSignature()">Clear Signature</button>
+</div>
+</div>
+</div>
+
+<div class="submit-section">
+<h3>Complete Portal Submission</h3>
+<p>Submit questionnaire, interviews, uploads, and contract securely.</p>
+<button type="submit" class="btn" id="submit-btn">Submit Complete Portal</button>
+</div>
+</div>
+
+</form>
+
+<div id="success-screen" class="success-screen">
+<h2>Submission Complete</h2>
+<p>Your wedding portal has been successfully recorded.</p>
+<p>A confirmation email, PDF copy, edit link, and client dashboard access link will be sent automatically.</p>
+</div>
 </main>
 
 <footer class="site-footer">
-  <span>Mejasan Media Production</span> &nbsp;·&nbsp; Nairobi, Kenya
+<span>Mejasan Media Production</span> · Nairobi, Kenya
 </footer>
 
 <script>
-// ─── GOOGLE SHEET SENDER ───
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw8vMIk_JaIhuE-zEkd1alv3jI_ClEAeOVgHU2g6bsniLRTgGHdFij0OC14SjU-h3KZ/exec';
 const form = document.forms['submit-to-google-sheet'];
+const tabs = document.querySelectorAll('.tab-panel');
+const pills = document.querySelectorAll('.nav-pill');
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.innerText = "Sending...";
-
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => {
-      console.log('Success!', response);
-      showSuccess();
-    })
-    .catch(error => {
-      console.error('Error!', error.message);
-      btn.disabled = false;
-      btn.innerText = "Submit Questionnaire";
-      alert("There was an error. Please try again or check your internet.");
-    });
-});
+function goTab(n) {
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle('active', i === n);
+    pills[i].classList.toggle('active', i === n);
+    if (i < n) pills[i].classList.add('done');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 function showSuccess() {
   document.getElementById('wedding-form').style.display = 'none';
   document.getElementById('success-screen').classList.add('visible');
-  window.scrollTo({top: 200, behavior:'smooth'});
 }
 
-// ─── UI Helpers ───
-function goTab(n) {
-  // Logic for tab switching if you decide to add content back to the other tabs
+// Signature Pad
+const canvas = document.getElementById('signature-pad');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+
+function resizeCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
 }
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+canvas.addEventListener('mousedown', () => { drawing = true; ctx.beginPath(); });
+canvas.addEventListener('mouseup', () => {
+  drawing = false;
+  document.getElementById('client_signature_data').value = canvas.toDataURL();
+});
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('touchstart', e => { drawing = true; ctx.beginPath(); });
+canvas.addEventListener('touchend', () => {
+  drawing = false;
+  document.getElementById('client_signature_data').value = canvas.toDataURL();
+});
+canvas.addEventListener('touchmove', drawTouch);
+
+function draw(e) {
+  if (!drawing) return;
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#000';
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+}
+
+function drawTouch(e) {
+  if (!drawing) return;
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches[0];
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#000';
+  ctx.lineTo(x, y);
+  ctx.stroke();
+}
+
+function clearSignature() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  document.getElementById('client_signature_data').value = '';
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerText = 'Sending...';
+
+  const formData = new FormData(form);
+  formData.append('timestamp', new Date().toISOString());
+  formData.append('client_id', 'MEJ-' + Date.now());
+  formData.append('submission_status', 'Completed');
+  formData.append('payment_status', 'Pending');
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log('Success:', data);
+    showSuccess();
+  })
+  .catch(error => {
+    console.error('Error!', error.message);
+    btn.disabled = false;
+    btn.innerText = 'Submit Complete Portal';
+    alert('Submission failed. Please check internet or retry.');
+  });
+});
 </script>
 </body>
 </html>
