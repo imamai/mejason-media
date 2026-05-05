@@ -245,355 +245,11 @@
   }
   .field textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   @media (max-width: 580px) {
-    .field-row, .field-row-3 { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
   }
 
-  .hint {
-    font-size: 11px;
-    color: #aaa;
-    margin-top: 5px;
-    font-style: italic;
-  }
-
-  /* RADIO / CHECKBOX */
-  .radio-group, .check-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 6px;
-  }
-  .radio-opt, .check-opt {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 13px;
-    background: var(--input-bg);
-    user-select: none;
-  }
-  .radio-opt:hover, .check-opt:hover {
-    border-color: var(--gold);
-    background: #fffef9;
-  }
-  .radio-opt input, .check-opt input { accent-color: var(--gold); }
-  .radio-opt.selected, .check-opt.selected {
-    border-color: var(--gold);
-    background: #fffbee;
-  }
-
-  /* TIMELINE TABLE */
-  .timeline-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  /* FAMILY GROUPS */
-  .family-entries { display: flex; flex-direction: column; gap: 10px; }
-  .family-entry {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .family-entry input { flex: 1; }
-  .btn-remove {
-    width: 32px; height: 32px;
-    border: 1px solid #eee;
-    border-radius: 2px;
-    background: none;
-    color: #ccc;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .btn-remove:hover { border-color: #ffaaaa; color: #c0392b; background: #fff5f5; }
-  .btn-add-row {
-    margin-top: 10px;
-    padding: 9px 18px;
-    border: 1px dashed var(--gold);
-    border-radius: 2px;
-    background: none;
-    color: var(--gold);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-    width: 100%;
-  }
-  .btn-add-row:hover { background: #fffbee; }
-
-  /* CONSENT BLOCK */
-  .consent-block {
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 20px;
-    background: var(--cream);
-    margin-top: 8px;
-  }
-  .consent-option {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    margin-bottom: 10px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    background: var(--section-bg);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .consent-option:last-child { margin-bottom: 0; }
-  .consent-option:hover { border-color: var(--gold); }
-  .consent-option input[type="radio"] { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; }
-  .consent-option-text strong { display: block; font-size: 13px; margin-bottom: 2px; }
-  .consent-option-text span { font-size: 12px; color: var(--muted); }
-
-  /* NAV BUTTONS */
-  .form-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-  }
-  .btn {
-    padding: 13px 32px;
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: none;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--black);
-  }
-  .btn-primary:hover { background: #b8943e; }
-  .btn-ghost {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .btn-ghost:hover { border-color: var(--muted); color: var(--black); }
-  .btn-danger {
-    background: var(--red);
-    color: #fff;
-  }
-  .btn-danger:hover { background: #a93226; }
-  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-  /* CONTRACT TAB */
-  .contract-header {
-    text-align: center;
-    padding: 48px 28px 32px;
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 24px;
-  }
-  .contract-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-  }
-  .contract-header p {
-    font-size: 13px;
-    color: var(--muted);
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .contract-meta {
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 28px;
-    margin-bottom: 24px;
-  }
-  .contract-meta h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .contract-body {
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 24px;
-  }
-  .contract-body h3 {
-    background: var(--black);
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    font-weight: 400;
-  }
-  .contract-clauses { padding: 28px; }
-  .clause {
-    margin-bottom: 22px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid #f0ece4;
-  }
-  .clause:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .clause-title {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .clause p { font-size: 14px; line-height: 1.75; color: #3a3a3a; }
-
-  .signature-block {
-    background: var(--section-bg);
-    border: 1px solid var(--gold);
-    border-radius: 4px;
-    padding: 32px 28px;
-    margin-bottom: 24px;
-  }
-  .signature-block h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    letter-spacing: 0.06em;
-  }
-  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 580px) { .sig-grid { grid-template-columns: 1fr; } }
-  .sig-party h4 {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .sig-canvas-wrap {
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    background: var(--input-bg);
-    position: relative;
-    height: 100px;
-    overflow: hidden;
-    margin-bottom: 10px;
-  }
-  .sig-canvas-wrap canvas {
-    width: 100%; height: 100%;
-    cursor: crosshair;
-    display: block;
-    touch-action: none;
-  }
-  .sig-hint {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 12px;
-    color: #ccc;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    font-style: italic;
-    white-space: nowrap;
-  }
-  .btn-clear-sig {
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    background: none;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-  }
-  .btn-clear-sig:hover { border-color: var(--red); color: var(--red); }
-
-  /* INTERVIEW TAB */
-  .interview-card {
-    background: var(--section-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    animation: fadeUp 0.4s ease both;
-  }
-  .interview-card-header {
-    background: var(--black);
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .interview-card-header h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 400;
-  }
-  .interview-card-body { padding: 24px; }
-  .interview-q {
-    font-size: 13px;
-    color: #444;
-    padding: 10px 0;
-    border-bottom: 1px solid #f4f0e8;
-    display: flex;
-    gap: 10px;
-    line-height: 1.6;
-  }
-  .interview-q:last-child { border-bottom: none; }
-  .interview-q .qnum {
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-    min-width: 18px;
-    padding-top: 1px;
-  }
-  .guide-note {
-    background: #fffbee;
-    border: 1px solid var(--gold-light);
-    border-radius: 4px;
-    padding: 18px 22px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    color: #5a4a20;
-    line-height: 1.7;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .guide-note .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-
-  /* SUCCESS / SUBMIT */
+  /* SUBMIT & SUCCESS */
   .submit-section {
     text-align: center;
     padding: 40px 28px;
@@ -628,13 +284,23 @@
     margin: 0 auto 20px;
     font-size: 28px;
   }
-  .success-screen h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 300;
-    margin-bottom: 10px;
+  .btn {
+    padding: 13px 32px;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
   }
-  .success-screen p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .btn-primary:hover { background: #b8943e; }
 
   /* FOOTER */
   .site-footer {
@@ -666,7 +332,7 @@
 <!-- HERO -->
 <div class="hero">
   <h1>Your Wedding,<br/><em>Beautifully</em> Planned</h1>
-  <p>Complete your wedding media planning questionnaire, review the morning interview guide, and sign your contract — all in one place.</p>
+  <p>Complete your wedding media planning questionnaire and let us capture your story.</p>
 </div>
 
 <!-- PROGRESS NAV -->
@@ -675,20 +341,19 @@
     <div class="nav-pill active" id="np0"><span class="nav-num">1</span>Questionnaire</div>
   </button>
   <div class="nav-sep"></div>
-  <button class="nav-step" onclick="goTab(1)">
+  <button class="nav-step" style="opacity: 0.5; cursor: default;">
     <div class="nav-pill" id="np1"><span class="nav-num">2</span>Interview Guide</div>
   </button>
   <div class="nav-sep"></div>
-  <button class="nav-step" onclick="goTab(2)">
+  <button class="nav-step" style="opacity: 0.5; cursor: default;">
     <div class="nav-pill" id="np2"><span class="nav-num">3</span>Contract</div>
   </button>
 </div>
 
 <main class="main">
-  <!-- The ID here matches the JavaScript 'Sender' script provided earlier -->
+  <!-- FORM START -->
   <form id="wedding-form" name="submit-to-google-sheet">
 
-    <!-- ======= TAB 1: QUESTIONNAIRE ======= -->
     <div class="tab-panel active" id="tab0">
 
       <!-- Section 1 -->
@@ -701,17 +366,17 @@
           <div class="field-row">
             <div class="field">
               <label>Bride's Full Name <span class="req">*</span></label>
-              <input type="text" name="bride_name" placeholder="e.g. Amina Wanjiku Kamau" id="bride-name" required/>
+              <input type="text" name="bride_name" placeholder="e.g. Amina Wanjiku Kamau" required/>
             </div>
             <div class="field">
               <label>Groom's Full Name <span class="req">*</span></label>
-              <input type="text" name="groom_name" placeholder="e.g. David Otieno Mwangi" id="groom-name" required/>
+              <input type="text" name="groom_name" placeholder="e.g. David Otieno Mwangi" required/>
             </div>
           </div>
           <div class="field-row">
             <div class="field">
               <label>Wedding Date(s) <span class="req">*</span></label>
-              <input type="date" name="wedding_date" id="wedding-date" required/>
+              <input type="date" name="wedding_date" required/>
             </div>
             <div class="field">
               <label>Wedding Theme Color(s)</label>
@@ -719,32 +384,21 @@
             </div>
           </div>
           <div class="field">
-            <label>Overall Wedding Theme / Concept</label>
-            <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="theme_style" value="rustic"/> Rustic</label>
-              <label class="radio-opt"><input type="radio" name="theme_style" value="royal"/> Royal</label>
-              <label class="radio-opt"><input type="radio" name="theme_style" value="modern"/> Modern</label>
-              <label class="radio-opt"><input type="radio" name="theme_style" value="garden"/> Garden</label>
-              <label class="radio-opt"><input type="radio" name="theme_style" value="traditional"/> Traditional</label>
-              <label class="radio-opt"><input type="radio" name="theme_style" value="other"/> Other</label>
-            </div>
-          </div>
-          <div class="field">
             <label>Bride Preparation Location <span class="req">*</span></label>
-            <input type="text" name="bride_prep_location" placeholder="Venue name, exact address or GPS link" required/>
+            <input type="text" name="bride_prep_location" placeholder="Venue name or address" required/>
           </div>
           <div class="field">
             <label>Groom Preparation Location <span class="req">*</span></label>
-            <input type="text" name="groom_prep_location" placeholder="Venue name, exact address or GPS link" required/>
+            <input type="text" name="groom_prep_location" placeholder="Venue name or address" required/>
           </div>
           <div class="field-row">
             <div class="field">
               <label>Ceremony Venue <span class="req">*</span></label>
-              <input type="text" name="ceremony_venue" placeholder="Name & Location" required/>
+              <input type="text" name="ceremony_venue" required/>
             </div>
             <div class="field">
               <label>Reception Venue <span class="req">*</span></label>
-              <input type="text" name="reception_venue" placeholder="Name & Location" required/>
+              <input type="text" name="reception_venue" required/>
             </div>
           </div>
         </div>
@@ -754,18 +408,10 @@
       <div class="section-card">
         <div class="section-header">
           <div class="section-num">2</div>
-          <div class="section-title">Wedding Day Timeline</div>
+          <div class="section-title">Timeline & Creative</div>
         </div>
         <div class="section-body">
-          <div class="timeline-grid">
-            <div class="field">
-              <label>Bride Prep Start Time</label>
-              <input type="time" name="bride_prep_time"/>
-            </div>
-            <div class="field">
-              <label>Groom Prep Start Time</label>
-              <input type="time" name="groom_prep_time"/>
-            </div>
+          <div class="field-row">
             <div class="field">
               <label>Ceremony Start Time</label>
               <input type="time" name="ceremony_time"/>
@@ -775,36 +421,25 @@
               <input type="time" name="reception_time"/>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Section 3 -->
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-num">3</div>
-          <div class="section-title">Creative Direction</div>
-        </div>
-        <div class="section-body">
           <div class="field">
-            <label>Photography Style</label>
+            <label>Photography Style Preference</label>
             <select name="photo_style">
                 <option value="Documentary">Documentary</option>
                 <option value="Editorial">Editorial</option>
                 <option value="Traditional">Traditional</option>
-                <option value="Mix">Mix</option>
             </select>
           </div>
           <div class="field">
-            <label>Reference photos or videos you love?</label>
-            <textarea name="creative_references" placeholder="Share links or styles..."></textarea>
+            <label>Special Requests / Notes</label>
+            <textarea name="notes" placeholder="Any specific moments you want us to capture?"></textarea>
           </div>
         </div>
       </div>
 
-      <!-- SUBMIT BUTTON -->
-      <div class="submit-section">
-        <h3>All Finished?</h3>
-        <p>Your data will be securely sent to Mejasan Media Production.</p>
+      <!-- SUBMIT -->
+      <div class="submit-section" id="submit-section">
+        <h3>Ready to send?</h3>
+        <p>Please review your details before submitting to our production team.</p>
         <button type="submit" class="btn btn-primary" id="submit-btn">Submit Questionnaire</button>
       </div>
 
@@ -815,107 +450,48 @@
   <div id="success-screen" class="success-screen">
     <div class="success-icon">✓</div>
     <h2>Received!</h2>
-    <p>Thank you. We have sent a confirmation to your Gmail and recorded your details in our system.</p>
+    <p>Thank you. Your details have been recorded in the Mejasan Media system. We will contact you shortly.</p>
   </div>
 </main>
 
- <footer class="site-footer">
-  <span>Mejasan Media Production</span> &nbsp;·&nbsp; We Deliver Quality &nbsp;·&nbsp; Nairobi, Kenya
+<footer class="site-footer">
+  <span>Mejasan Media Production</span> &nbsp;·&nbsp; Nairobi, Kenya
 </footer>
 
 <script>
-// ─── Tab navigation ───
-let currentTab = 0;
-function goTab(n) {
-  document.querySelectorAll('.tab-panel').forEach((p,i) => p.classList.toggle('active', i===n));
-  ['np0','np1','np2'].forEach((id,i) => {
-    const el = document.getElementById(id);
-    el.classList.toggle('active', i===n);
-    if(i < n) el.classList.add('done'); else el.classList.remove('done');
-  });
-  currentTab = n;
-  window.scrollTo({top: 0, behavior:'smooth'});
-}
+// ─── GOOGLE SHEET SENDER ───
+const scriptURL = 'https://script.google.com/macros/s/AKfycbw8vMIk_JaIhuE-zEkd1alv3jI_ClEAeOVgHU2g6bsniLRTgGHdFij0OC14SjU-h3KZ/exec';
+const form = document.forms['submit-to-google-sheet'];
 
-// ─── Radio/check highlight ───
-document.querySelectorAll('.radio-opt, .check-opt').forEach(opt => {
-  opt.addEventListener('change', () => {
-    const name = opt.querySelector('input').name;
-    if(name) document.querySelectorAll(`input[name="${name}"]`).forEach(inp => {
-      inp.closest('.radio-opt, .check-opt')?.classList.toggle('selected', inp.checked);
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerText = "Sending...";
+
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+      console.log('Success!', response);
+      showSuccess();
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      btn.disabled = false;
+      btn.innerText = "Submit Questionnaire";
+      alert("There was an error. Please try again or check your internet.");
     });
-  });
 });
 
-// ─── Family rows ───
-function addFamilyRow() {
-  const list = document.getElementById('family-list');
-  const div = document.createElement('div');
-  div.className = 'family-entry';
-  div.innerHTML = `<input type="text" placeholder="Group combination..."/><button class="btn-remove" onclick="removeRow(this)" title="Remove">×</button>`;
-  list.appendChild(div);
-  div.querySelector('input').focus();
-}
-function removeRow(btn) {
-  const list = document.getElementById('family-list');
-  if(list.children.length > 1) btn.closest('.family-entry').remove();
-}
-
-// ─── Signature canvas ───
-function initCanvas(id, hintId) {
-  const canvas = document.getElementById(id);
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  ctx.strokeStyle = '#1a1a1a';
-  ctx.lineWidth = 2;
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-  let drawing = false;
-
-  function getPos(e) {
-    const r = canvas.getBoundingClientRect();
-    const src = e.touches ? e.touches[0] : e;
-    return { x: (src.clientX - r.left) * (canvas.width / r.width), y: (src.clientY - r.top) * (canvas.height / r.height) };
-  }
-  function start(e) {
-    drawing = true;
-    const p = getPos(e);
-    ctx.beginPath(); ctx.moveTo(p.x, p.y);
-    document.getElementById(hintId).style.opacity = '0';
-    e.preventDefault();
-  }
-  function move(e) {
-    if(!drawing) return;
-    const p = getPos(e);
-    ctx.lineTo(p.x, p.y); ctx.stroke();
-    e.preventDefault();
-  }
-  function end() { drawing = false; }
-
-  canvas.addEventListener('mousedown', start);
-  canvas.addEventListener('mousemove', move);
-  canvas.addEventListener('mouseup', end);
-  canvas.addEventListener('mouseleave', end);
-  canvas.addEventListener('touchstart', start, {passive:false});
-  canvas.addEventListener('touchmove', move, {passive:false});
-  canvas.addEventListener('touchend', end);
-}
-
-function clearSig(id, hintId) {
-  const canvas = document.getElementById(id);
-  canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
-  document.getElementById(hintId).style.opacity = '1';
-}
-
-['sig-client','sig-witness','sig-company','sig-compwit'].forEach((id,i) => {
-  initCanvas(id, ['hint-client','hint-witness','hint-company','hint-compwit'][i]);
-});
-
-// ─── Submit ───
-function submitAll() {
-  document.getElementById('submit-section').style.display = 'none';
+function showSuccess() {
+  document.getElementById('wedding-form').style.display = 'none';
   document.getElementById('success-screen').classList.add('visible');
-  window.scrollTo({top: document.getElementById('success-screen').offsetTop - 80, behavior:'smooth'});
+  window.scrollTo({top: 200, behavior:'smooth'});
+}
+
+// ─── UI Helpers ───
+function goTab(n) {
+  // Logic for tab switching if you decide to add content back to the other tabs
 }
 </script>
 </body>
